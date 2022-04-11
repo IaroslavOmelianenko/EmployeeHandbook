@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New department</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/departments}" th:object="${department}">
+    <lable for="departmentName">Department name: </lable>
+    <input type="text" th:field="*{departmentName}" id="departmentName/">
+
+    <br/>
+    <lable for="director">Director: </lable>
+    <input type="text" th:field="*{director}" id="director/">
+
+    <br/>
+    <lable for="moderator">Moderator: </lable>
+    <input type="text" th:field="*{moderator}" id="moderator/">
+
+    <br/>
+    <lable for="headDepartment">Head department: </lable>
+    <input type="text" th:field="*{headDepartment}" id="headDepartment/">
+
+    <br/>
+    <lable for="subordinateDepartment">Subordinate department: </lable>
+    <input type="text" th:field="*{subordinateDepartment}" id="SubordinateDepartment/">
+
+    <br/>
+    <input type="submit" value="Create department">
+
+</form>
+<br/>
+<hr/>
+<div>
+    <a th:href="@{/departments}"
+       th:text="${'cancel'}">cancel</a>
+</div>
+
+</body>
+</html>

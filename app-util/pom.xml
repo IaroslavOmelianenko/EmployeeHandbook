@@ -12,12 +12,48 @@
     <artifactId>app-util</artifactId>
 
     <dependencies>
-
+        <dependency>
+            <groupId>org.liquibase</groupId>
+            <artifactId>liquibase-core</artifactId>
+            <version>4.9.1</version>
+        </dependency>
     </dependencies>
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>
         <maven.compiler.target>8</maven.compiler.target>
+
+        <profile.propertyFile>src/liquibase/liquibase.properties</profile.propertyFile>
+        <profile.changeLogFile>src/liquibase/master.xml</profile.changeLogFile>
     </properties>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.liquibase</groupId>
+                <artifactId>liquibase-maven-plugin</artifactId>
+                <version>4.9.1</version>
+                <configuration>
+                    <propertyFile>${profile.propertyFile}</propertyFile>
+                    <changeLogFile>${profile.changeLogFile}</changeLogFile>
+                </configuration>
+
+                <dependencies>
+                    <dependency>
+                        <groupId>org.hibernate</groupId>
+                        <artifactId>hibernate-core</artifactId>
+                        <version>5.6.7.Final</version>
+                        <type>pom</type>
+                    </dependency>
+                    <dependency>
+                        <groupId>org.postgresql</groupId>
+                        <artifactId>postgresql</artifactId>
+                        <version>42.3.3</version>
+                    </dependency>
+
+                </dependencies>
+            </plugin>
+        </plugins>
+    </build>
 
 </project>

@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<databaseChangeLog
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:pro="http://www.liquibase.org/xml/ns/pro"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-4.4.xsd
+      http://www.liquibase.org/xml/ns/pro http://www.liquibase.org/xml/ns/pro/liquibase-pro-4.5.xsd">
+
+    <changeSet id="v01-1" author="IaroslavOmelianenko">
+
+        <createTable tableName="departments">
+
+            <column name="departmentid" type="SERIAL">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="departmentname" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="director" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="moderator" type="VARCHAR(50)"/>
+
+            <column name="headdepartment" type="VARCHAR(50)"/>
+
+            <column name="subordinatedepartment" type="VARCHAR(50)"/>
+
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="v01-2" author="IaroslavOmelianenko">
+
+        <createTable tableName="employees">
+
+            <column name="employeeid" type="SERIAL">
+                <constraints primaryKey="true"/>
+            </column>
+
+            <column name="name" type="VARCHAR(50)">
+                <constraints nullable="false" unique="true"/>
+            </column>
+
+            <column name="email" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="department" type="INTEGER">
+                <constraints foreignKeyName="department"
+                             referencedTableName="departments"
+                             referencedColumnNames="departmentid"/>
+            </column>
+
+            <column name="position" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+
+            <column name="role" type="VARCHAR(50)">
+                <constraints nullable="false"/>
+            </column>
+        </createTable>
+    </changeSet>
+
+
+    <changeSet id="v01-3" author="IaroslavOmelianenko">
+
+<!--inserting departments-->
+        <insert tableName="departments">
+            <column name="departmentname" value="main office"/>
+            <column name="director" value="Marty McFly"/>
+            <column name="moderator" value="Marty McFly"/>
+
+            <column name="subordinatedepartment" value="management subdivision"/>
+        </insert>
+
+        <insert tableName="departments">
+            <column name="departmentname" value="management subdivision"/>
+            <column name="director" value="Gregory House"/>
+            <column name="moderator" value="James Wilson"/>
+
+            <column name="headdepartment" value="main office"/>
+            <column name="subordinatedepartment" value="sales department"/>
+        </insert>
+
+        <insert tableName="departments">
+            <column name="departmentname" value="sales department"/>
+            <column name="director" value="Davy Jones"/>
+
+            <column name="headdepartment" value="management subdivision"/>
+        </insert>
+
+<!--inserting employees-->
+        <insert tableName="employees">
+            <column name="name" value="Marty McFly"/>
+            <column name="email" value="mmcfly@mail.com"/>
+            <column name="department" value="1"/>
+            <column name="position" value="director"/>
+            <column name="role" value="admin"/>
+        </insert>
+
+        <insert tableName="employees">
+            <column name="name" value="Doc Brown"/>
+            <column name="email" value="dbrown@mail.com"/>
+            <column name="department" value="1"/>
+            <column name="position" value="deputy director"/>
+            <column name="role" value="user"/>
+        </insert>
+
+        <insert tableName="employees">
+            <column name="name" value="Gregory House"/>
+            <column name="email" value="ghouse@mail.com"/>
+            <column name="department" value="2"/>
+            <column name="position" value="manager"/>
+            <column name="role" value="user"/>
+        </insert>
+
+        <insert tableName="employees">
+            <column name="name" value="James Wilson"/>
+            <column name="email" value="jwilson@mail.com"/>
+            <column name="department" value="2"/>
+            <column name="position" value="manager"/>
+            <column name="role" value="moderator"/>
+        </insert>
+
+        <insert tableName="employees">
+            <column name="name" value="Davy Jones"/>
+            <column name="email" value="djones@mail.com"/>
+            <column name="department" value="3"/>
+            <column name="position" value="salesman"/>
+            <column name="role" value="user"/>
+        </insert>
+
+        <insert tableName="employees">
+            <column name="name" value="Hector Barbossa"/>
+            <column name="email" value="hbarbossa@mail.com"/>
+            <column name="department" value="3"/>
+            <column name="position" value="salesman"/>
+            <column name="role" value="user"/>
+        </insert>
+    </changeSet>
+
+</databaseChangeLog>
+

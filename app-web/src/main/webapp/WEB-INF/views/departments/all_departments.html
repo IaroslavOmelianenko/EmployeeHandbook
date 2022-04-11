@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All departments</title>
+</head>
+<body>
+<b>Departments:</b>
+<div th:each="department : ${departments}">
+    <a th:href="@{/departments/{id}(id=${department.getDepartmentID()})}"
+       th:text="${'[id:' + department.getDepartmentID() + '] ' + department.getDepartmentName()}">department</a>
+</div>
+<br/>
+<hr/>
+<a href="departments/new"/>Create new department</a>
+
+</body>
+</html>
