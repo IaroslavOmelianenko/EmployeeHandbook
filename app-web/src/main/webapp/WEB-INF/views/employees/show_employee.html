@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Employee</title>
+</head>
+<body>
+
+<b><p th:text="${'Employee: ' + employee.getEmployeeName()}">VALUE</p></b>
+<p th:text="${'ID: ' + employee.getEmployeeID()}">VALUE</p>
+<p th:text="${'e-mail: ' + employee.getEmail()}">VALUE</p>
+<p th:text="${'Position: ' + employee.getPosition()}">VALUE</p>
+<p th:text="${'Role: ' + employee.getRole()}">VALUE</p>
+<p th:text="${'Department: ' + employee.getDepartment()}">VALUE</p>
+
+<br/>
+<a th:href="@{/employees/{id}/edit_employee(id=${employee.getEmployeeID()})}">Edit employee</a>
+<br/>
+<br/>
+<form th:method="DELETE" th:action="@{/employees/{id}(id=${employee.getEmployeeID()})}">
+    <input type="submit" value="Delete employee"/>
+</form>
+
+<br/>
+<hr/>
+<div>
+    <a th:href="@{/employees}"
+       th:text="${'< back to employees'}">back</a>
+</div>
+
+</body>
+</form>
+</html>

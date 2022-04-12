@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>New employee</title>
+</head>
+<body>
+
+<form th:method="POST" th:action="@{/employees}" th:object="${employee}">
+    <lable for="name">Name: </lable>
+    <input type="text" th:field="*{name}" id="name/">
+
+    <br/>
+    <lable for="email">e-mail: </lable>
+    <input type="text" th:field="*{email}" id="email/">
+
+    <br/>
+    <lable for="position">Position: </lable>
+    <input type="text" th:field="*{position}" id="position/">
+
+    <br/>
+    <lable for="role">Role: </lable>
+    <input type="text" th:field="*{role}" id="role/">
+
+    <br/>
+    <lable for="department">Department: </lable>
+    <input type="text" th:field="*{department}" id="department/">
+
+    <br/>
+    <input type="submit" value="Register employee">
+
+</form>
+<br/>
+<hr/>
+<div>
+    <a th:href="@{/employees}"
+       th:text="${'cancel'}">cancel</a>
+</div>
+
+</body>
+</html>

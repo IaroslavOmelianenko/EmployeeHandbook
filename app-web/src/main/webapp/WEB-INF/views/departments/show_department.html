@@ -14,7 +14,7 @@
 <p th:text="${'Subordinate department: ' + department.getSubordinateDepartment()}">VALUE</p>
 
 <br/>
-<a th:href="@{/departments/{id}/edit(id=${department.getDepartmentID()})}">Edit department</a>
+<a th:href="@{/departments/{id}/edit_department(id=${department.getDepartmentID()})}">Edit department</a>
 <br/>
 <br/>
 <form th:method="DELETE" th:action="@{/departments/{id}(id=${department.getDepartmentID()})}">
@@ -25,7 +25,7 @@
 <hr/>
 <div>
     <a th:href="@{/departments}"
-       th:text="${'< back to departments'}">department</a>
+       th:text="${'< back to departments'}">back</a>
 </div>
 
 </body>

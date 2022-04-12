@@ -26,13 +26,13 @@ public class DepartmentController {
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){
         model.addAttribute("department", departmentService.searchDepartment(id));
-    return "departments/show";
+    return "departments/show_department";
     }
 
-    @GetMapping("/new")
+    @GetMapping("/new_department")
     public String newDepartment(Model model){
         model.addAttribute("department", new Department());
-        return "departments/new";
+        return "departments/new_department";
     }
 
     @PostMapping()
@@ -42,10 +42,10 @@ public class DepartmentController {
     }
 
 
-    @GetMapping("/{id}/edit")
+    @GetMapping("/{id}/edit_department")
     public String edit(@PathVariable("id") int id, Model model){
         model.addAttribute("department", departmentService.searchDepartment(id));
-        return "departments/edit";
+        return "departments/edit_department";
     }
 
     @PatchMapping("/{id}")

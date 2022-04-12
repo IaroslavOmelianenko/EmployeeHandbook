@@ -68,6 +68,5 @@ public class DepartmentDAOImpl implements DepartmentDAO {
         transaction.commit();
         session.close();
     }
-
 }
 

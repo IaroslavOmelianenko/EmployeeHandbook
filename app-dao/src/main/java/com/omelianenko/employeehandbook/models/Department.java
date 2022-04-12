@@ -13,15 +13,12 @@ public class Department {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int departmentID;
-    @Column(name = "departmentname")
+
+    @Column
     private String departmentName;
-    @Column
     private String director;
-    @Column
     private String moderator;
-    @Column(name = "headdepartment")
     private String headDepartment;
-    @Column(name = "subordinatedepartment")
     private String subordinateDepartment;
 
     @OneToMany(mappedBy = "department",

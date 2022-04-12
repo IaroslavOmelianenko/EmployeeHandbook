@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>All employees</title>
+</head>
+<body>
+<b>Employees:</b>
+<div th:each="employee : ${employees}">
+    <a th:href="@{/employees/{id}(id=${employee.getEmployeeID()})}"
+       th:text="${'[id:' + employee.getEmployeeID() + '] ' + employee.getName()}">employee</a>
+</div>
+<br/>
+<hr/>
+<a href="employees/new_employee"/>Register new employee</a>
+
+</body>
+</html>
