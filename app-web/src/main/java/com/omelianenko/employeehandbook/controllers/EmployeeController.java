@@ -24,6 +24,12 @@ public class EmployeeController {
         return "employees/show_employee";
     }
 
+    @GetMapping
+    public String listEmployees(Model model){
+        model.addAttribute("employees", employeeService.findAllEmployees());
+        return "employees/all_employees";
+    }
+
     @GetMapping("/new_employee")
     public String newEmployee(Model model){
         model.addAttribute("employee", new Employee());

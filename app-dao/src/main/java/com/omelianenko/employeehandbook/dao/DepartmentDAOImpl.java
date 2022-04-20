@@ -1,9 +1,7 @@
 package com.omelianenko.employeehandbook.dao;
 
-
 import com.omelianenko.employeehandbook.hibernate.HibernateSessionFactory;
 import com.omelianenko.employeehandbook.models.Department;
-import com.omelianenko.employeehandbook.models.Employee;
 import org.hibernate.Session;
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
@@ -12,7 +10,6 @@ import java.util.List;
 
 @Repository
 public class DepartmentDAOImpl implements DepartmentDAO {
-
 
     @Override
     public List<Department> findAllDepartments() {
@@ -29,14 +26,6 @@ public class DepartmentDAOImpl implements DepartmentDAO {
                 getSessionFactory().
                 openSession().
                 get(Department.class, id);
-    }
-
-    @Override
-    public Employee findEmployeeByDepartmentID(int id) {
-        return HibernateSessionFactory.
-                getSessionFactory().
-                openSession().
-                get(Employee.class, id);
     }
 
     @Override

@@ -10,23 +10,18 @@
 
         <createTable tableName="departments">
 
-            <column name="departmentid" type="SERIAL">
-                <constraints primaryKey="true"/>
+            <column name="id" type="SERIAL">
+                <constraints nullable="false"
+                             primaryKey="true"/>
             </column>
 
-            <column name="departmentname" type="VARCHAR(50)">
-                <constraints nullable="false" unique="true"/>
+            <column name="department_name" type="VARCHAR(50)" >
+                <constraints nullable="false" />
             </column>
 
-            <column name="director" type="VARCHAR(50)">
-                <constraints nullable="false"/>
-            </column>
+            <column name="head_department_id" type="INTEGER"/>
 
-            <column name="moderator" type="VARCHAR(50)"/>
-
-            <column name="headdepartment" type="VARCHAR(50)"/>
-
-            <column name="subordinatedepartment" type="VARCHAR(50)"/>
+            <column name="subordinate_department_id" type="INTEGER"/>
 
         </createTable>
     </changeSet>
@@ -36,111 +31,183 @@
 
         <createTable tableName="employees">
 
-            <column name="employeeid" type="SERIAL">
-                <constraints primaryKey="true"/>
+            <column name="id" type="SERIAL">
+                <constraints nullable="false"
+                             primaryKey="true"/>
             </column>
 
-            <column name="name" type="VARCHAR(50)">
-                <constraints nullable="false" unique="true"/>
-            </column>
-
-            <column name="email" type="VARCHAR(50)">
+            <column name="employee_name" type="VARCHAR(50)">
                 <constraints nullable="false"/>
             </column>
 
-            <column name="department" type="INTEGER">
-                <constraints foreignKeyName="department"
-                             referencedTableName="departments"
-                             referencedColumnNames="departmentid"/>
+            <column name="email" type="VARCHAR(50)" />
+
+            <column name="password" type="VARCHAR(250)" >
+                <constraints nullable="false" />
             </column>
 
-            <column name="position" type="VARCHAR(50)">
-                <constraints nullable="false"/>
+            <column name="department_id" type="INTEGER">
+                <constraints foreignKeyName="department_id_fk"
+                     referencedTableName="departments"
+                     referencedColumnNames="id"/>
             </column>
 
-            <column name="role" type="VARCHAR(50)">
-                <constraints nullable="false"/>
+        </createTable>
+    </changeSet>
+
+    <changeSet id="v01-3" author="IaroslavOmelianenko">
+
+        <addColumn tableName="departments">
+            <column name="director_id" type="INTEGER"/>
+
+            <column name="moderator_id"  type="INTEGER"/>
+        </addColumn>
+
+    </changeSet>
+
+
+    <changeSet id="v01-4" author="IaroslavOmelianenko">
+
+        <createTable tableName="positions">
+
+            <column name="id" type="SERIAL">
+                <constraints nullable="false"
+                             primaryKey="true"/>
             </column>
+
+            <column name="position_name" type="VARCHAR(50)">
+                <constraints nullable="false" />
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="v01-5" author="IaroslavOmelianenko">
+
+        <createTable tableName="employee_positions">
+
+            <column name="employee_id" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="employee_id_fk"
+                             referencedTableName="employees"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="position_id" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="position_id"
+                             referencedTableName="positions"
+                             referencedColumnNames="id"/>
+            </column>
+
         </createTable>
     </changeSet>
 
 
-    <changeSet id="v01-3" author="IaroslavOmelianenko">
+    <changeSet id="v01-6" author="IaroslavOmelianenko">
 
-<!--inserting departments-->
-        <insert tableName="departments">
-            <column name="departmentname" value="main office"/>
-            <column name="director" value="Marty McFly"/>
-            <column name="moderator" value="Marty McFly"/>
+        <createTable tableName="roles">
 
-            <column name="subordinatedepartment" value="management subdivision"/>
-        </insert>
+            <column name="id" type="SERIAL">
+                <constraints nullable="false"
+                             primaryKey="true"/>
+            </column>
 
-        <insert tableName="departments">
-            <column name="departmentname" value="management subdivision"/>
-            <column name="director" value="Gregory House"/>
-            <column name="moderator" value="James Wilson"/>
+            <column name="role_name" type="VARCHAR(50)">
+                <constraints nullable="false" />
+            </column>
 
-            <column name="headdepartment" value="main office"/>
-            <column name="subordinatedepartment" value="sales department"/>
-        </insert>
-
-        <insert tableName="departments">
-            <column name="departmentname" value="sales department"/>
-            <column name="director" value="Davy Jones"/>
-
-            <column name="headdepartment" value="management subdivision"/>
-        </insert>
-
-<!--inserting employees-->
-        <insert tableName="employees">
-            <column name="name" value="Marty McFly"/>
-            <column name="email" value="mmcfly@mail.com"/>
-            <column name="department" value="1"/>
-            <column name="position" value="director"/>
-            <column name="role" value="admin"/>
-        </insert>
-
-        <insert tableName="employees">
-            <column name="name" value="Doc Brown"/>
-            <column name="email" value="dbrown@mail.com"/>
-            <column name="department" value="1"/>
-            <column name="position" value="deputy director"/>
-            <column name="role" value="user"/>
-        </insert>
-
-        <insert tableName="employees">
-            <column name="name" value="Gregory House"/>
-            <column name="email" value="ghouse@mail.com"/>
-            <column name="department" value="2"/>
-            <column name="position" value="manager"/>
-            <column name="role" value="user"/>
-        </insert>
-
-        <insert tableName="employees">
-            <column name="name" value="James Wilson"/>
-            <column name="email" value="jwilson@mail.com"/>
-            <column name="department" value="2"/>
-            <column name="position" value="manager"/>
-            <column name="role" value="moderator"/>
-        </insert>
-
-        <insert tableName="employees">
-            <column name="name" value="Davy Jones"/>
-            <column name="email" value="djones@mail.com"/>
-            <column name="department" value="3"/>
-            <column name="position" value="salesman"/>
-            <column name="role" value="user"/>
-        </insert>
-
-        <insert tableName="employees">
-            <column name="name" value="Hector Barbossa"/>
-            <column name="email" value="hbarbossa@mail.com"/>
-            <column name="department" value="3"/>
-            <column name="position" value="salesman"/>
-            <column name="role" value="user"/>
-        </insert>
+        </createTable>
     </changeSet>
 
+    <changeSet id="v01-7" author="IaroslavOmelianenko">
+
+        <createTable tableName="employee_roles">
+
+            <column name="employee_id" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="employee_id_fk"
+                             referencedTableName="employees"
+                             referencedColumnNames="id"/>
+            </column>
+
+            <column name="role_id" type="INTEGER">
+                <constraints nullable="false"
+                             foreignKeyName="role_id_fk"
+                             referencedTableName="roles"
+                             referencedColumnNames="id"/>
+            </column>
+
+        </createTable>
+    </changeSet>
+
+    <changeSet id="v01-8" author="IaroslavOmelianenko">
+
+        <addColumn tableName="employees">
+            <column name="role_id" type="INTEGER"/>
+            <column name="position_id"  type="INTEGER"/>
+        </addColumn>
+
+    </changeSet>
+
+
+
+    <changeSet id="v01-9" author="IaroslavOmelianenko">
+
+        <insert tableName="employees">
+            <column name="id" value="1"/>
+            <column name="employee_name" value="admin"/>
+            <column name="email" value="admin@mail.com"/>
+            <column name="position_id" value="1"/>
+            <column name="role_id" value="3"/>
+            <column name="password"
+                value="$2a$12$XO5g04bhDzPnQKF.Ba02peVF0wQYY5vQcJ8GgsW5I49vJJIUNTmhW"/>
+        </insert>
+
+    </changeSet>
+
+
+    <changeSet id="v01-10" author="IaroslavOmelianenko">
+
+        <insert tableName="roles">
+            <column name="id" value="1"/>
+            <column name="role_name" value="ROLE_USER"/>
+        </insert>
+        <insert tableName="roles">
+            <column name="id" value="2"/>
+            <column name="role_name" value="ROLE_MODERATOR"/>
+        </insert>
+        <insert tableName="roles">
+            <column name="id" value="3"/>
+            <column name="role_name" value="ROLE_ADMIN"/>
+        </insert>
+
+        <insert tableName="positions">
+            <column name="id" value="1"/>
+            <column name="position_name" value="Admin"/>
+        </insert>
+        <insert tableName="positions">
+            <column name="id" value="2"/>
+            <column name="position_name" value="employee"/>
+        </insert>
+
+    </changeSet>
+
+
+    <changeSet id="v01-11" author="IaroslavOmelianenko">
+        <insert tableName="employee_roles">
+            <column name="employee_id" value="1"/>
+            <column name="role_id" value="3"/>
+        </insert>
+
+        <insert tableName="employee_positions">
+            <column name="employee_id" value="1"/>
+            <column name="position_id" value="1"/>
+        </insert>
+
+    </changeSet>
 </databaseChangeLog>
+
+
+
 

@@ -1,6 +1,5 @@
 package com.omelianenko.employeehandbook.models;
 
-
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
@@ -12,14 +11,19 @@ public class Department {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int departmentID;
 
-    @Column
+    @Column(name = "department_name")
     private String departmentName;
-    private String director;
-    private String moderator;
-    private String headDepartment;
-    private String subordinateDepartment;
+    @Column(name = "director_id")
+    private int director;
+    @Column(name = "moderator_id")
+    private int moderator;
+    @Column(name = "head_department_id")
+    private int headDepartment;
+    @Column(name = "subordinate_department_id")
+    private int subordinateDepartment;
 
     @OneToMany(mappedBy = "department",
             cascade = CascadeType.ALL,
@@ -29,13 +33,14 @@ public class Department {
     public Department() {
     }
 
-    public Department(String departmentName, String director, String moderator, String headDepartment, String subordinateDepartment) {
+    public Department(int departmentID, String departmentName, int director, int moderator, int headDepartment, int subordinateDepartment, List<Employee> departmentEmployees) {
+        this.departmentID = departmentID;
         this.departmentName = departmentName;
         this.director = director;
         this.moderator = moderator;
         this.headDepartment = headDepartment;
         this.subordinateDepartment = subordinateDepartment;
-        departmentEmployees = new ArrayList<>();
+        this.departmentEmployees = departmentEmployees;
     }
 
     public void addEmployee(Employee employee){
@@ -62,35 +67,35 @@ public class Department {
         this.departmentName = departmentName;
     }
 
-    public String getDirector() {
+    public int getDirector() {
         return director;
     }
 
-    public void setDirector(String director) {
+    public void setDirector(int director) {
         this.director = director;
     }
 
-    public String getModerator() {
+    public int getModerator() {
         return moderator;
     }
 
-    public void setModerator(String moderator) {
+    public void setModerator(int moderator) {
         this.moderator = moderator;
     }
 
-    public String getHeadDepartment() {
+    public int getHeadDepartment() {
         return headDepartment;
     }
 
-    public void setHeadDepartment(String headDepartment) {
+    public void setHeadDepartment(int headDepartment) {
         this.headDepartment = headDepartment;
     }
 
-    public String getSubordinateDepartment() {
+    public int getSubordinateDepartment() {
         return subordinateDepartment;
     }
 
-    public void setSubordinateDepartment(String subordinateDepartment) {
+    public void setSubordinateDepartment(int subordinateDepartment) {
         this.subordinateDepartment = subordinateDepartment;
     }
 

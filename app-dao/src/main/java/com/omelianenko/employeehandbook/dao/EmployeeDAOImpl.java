@@ -1,9 +1,10 @@
 package com.omelianenko.employeehandbook.dao;
 
-
 import com.omelianenko.employeehandbook.hibernate.HibernateSessionFactory;
 import com.omelianenko.employeehandbook.models.Employee;
 import org.hibernate.Session;
+import org.hibernate.SessionFactory;
+
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 
@@ -11,6 +12,7 @@ import java.util.List;
 
 @Repository
 public class EmployeeDAOImpl implements EmployeeDAO {
+
     @Override
     public List<Employee> findAllEmployees() {
         List<Employee> employeesList = (List<Employee>) HibernateSessionFactory.

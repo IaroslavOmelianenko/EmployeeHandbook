@@ -6,7 +6,9 @@
 </head>
 <body>
 
-<form th:method="PATCH" th:action="@{/departments/{id}(id=${department.getDepartmentID()})}" th:object="${department}">
+<form th:method="PATCH"
+      th:action="@{/departments/{id}(id=${department.getDepartmentID()})}"
+      th:object="${department}">
     <lable for="departmentName">Department name: </lable>
     <input type="text" th:field="*{departmentName}" id="departmentName/">
 

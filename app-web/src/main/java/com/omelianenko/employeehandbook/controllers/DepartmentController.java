@@ -8,7 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping("/departments")
+@RequestMapping(value = "/departments",
+        method = RequestMethod.OPTIONS)
 public class DepartmentController {
     private DepartmentService departmentService;
 
@@ -17,16 +18,16 @@ public class DepartmentController {
         this.departmentService = departmentService;
     }
 
+    @GetMapping("/{id}")
+    public String show(@PathVariable("id") int id, Model model){
+        model.addAttribute("department", departmentService.searchDepartment(id));
+        return "departments/show_department";
+    }
+
     @GetMapping
     public String listDepartments(Model model){
         model.addAttribute("departments", departmentService.findAllDepartments());
     return "departments/all_departments";
-    }
-
-    @GetMapping("/{id}")
-    public String show(@PathVariable("id") int id, Model model){
-        model.addAttribute("department", departmentService.searchDepartment(id));
-    return "departments/show_department";
     }
 
     @GetMapping("/new_department")

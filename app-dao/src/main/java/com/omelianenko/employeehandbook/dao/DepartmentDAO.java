@@ -12,8 +12,6 @@ public interface DepartmentDAO {
 
     Department searchById(int id);
 
-    Employee findEmployeeByDepartmentID(int id);
-
     void createDepartment(Department department);
 
     void update(Department department);

@@ -39,7 +39,4 @@ public class DepartmentServiceImpl implements DepartmentService {
     @Transactional
     public List<Department> findAllDepartments(){return departmentDAO.findAllDepartments();}
 
-    @Override
-    @Transactional
-    public Employee findEmployeeByDepartmentID(int id){return departmentDAO.findEmployeeByDepartmentID(id);}
 }

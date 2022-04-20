@@ -16,5 +16,4 @@ public interface DepartmentService {
 
     List<Department> findAllDepartments();
 
-    Employee findEmployeeByDepartmentID(int id);
 }

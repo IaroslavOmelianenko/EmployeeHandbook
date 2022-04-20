@@ -9,28 +9,28 @@ public class Employee {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private int employeeID;
 
-    @Column
+    @Column(name = "employee_name")
     private String name;
+    @Column(name = "email")
     private String email;
-    private String position;
-    private String role;
+    @Column(name = "password")
+    private String password;
+    @Column(name = "position_id")
+    private int position;
+    @Column(name = "role_id")
+    private int role;
 
 
     @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "department")
+    @JoinColumn(name = "department_id")
     private Department department;
 
     public Employee() {
     }
 
-    public Employee(String name, String email, String position, String role) {
-        this.name = name;
-        this.email = email;
-        this.position = position;
-        this.role = role;
-    }
 
     public int getEmployeeID() {
         return employeeID;
@@ -64,19 +64,27 @@ public class Employee {
         this.department = department;
     }
 
-    public String getPosition() {
+    public String getPassword() {
+        return password;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public int getPosition() {
         return position;
     }
 
-    public void setPosition(String position) {
+    public void setPosition(int position) {
         this.position = position;
     }
 
-    public String getRole() {
+    public int getRole() {
         return role;
     }
 
-    public void setRole(String role) {
+    public void setRole(int role) {
         this.role = role;
     }
 
