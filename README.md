@@ -1,8 +1,8 @@
 **Functionality:**
 - Database structure initialization with Liquibase
-- List of departments (/departments)
-- List of employees (/employees)
-- CRUD perations with departments and employees
+- List of departments ( /departments )
+- List of employees ( /employees )
+- CRUD operations with departments and employees
 
 **Modules description:**
 - *app-dao* working with databases
