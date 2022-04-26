@@ -3,8 +3,6 @@ package com.omelianenko.employeehandbook.dao;
 import com.omelianenko.employeehandbook.hibernate.HibernateSessionFactory;
 import com.omelianenko.employeehandbook.models.Employee;
 import org.hibernate.Session;
-import org.hibernate.SessionFactory;
-
 import org.hibernate.Transaction;
 import org.springframework.stereotype.Repository;
 

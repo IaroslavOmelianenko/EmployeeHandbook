@@ -8,8 +8,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @Controller
-@RequestMapping(value = "/departments",
-        method = RequestMethod.OPTIONS)
+@RequestMapping("/departments")
+
 public class DepartmentController {
     private DepartmentService departmentService;
 
@@ -23,7 +23,6 @@ public class DepartmentController {
         model.addAttribute("department", departmentService.searchDepartment(id));
         return "departments/show_department";
     }
-
     @GetMapping
     public String listDepartments(Model model){
         model.addAttribute("departments", departmentService.findAllDepartments());

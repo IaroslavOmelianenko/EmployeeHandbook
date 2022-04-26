@@ -9,8 +9,16 @@
 <form th:method="PATCH"
       th:action="@{/employees/{id}(id=${employee.getEmployeeID()})}"
       th:object="${employee}">
+    <lable for="employeeID">Employee ID: </lable>
+    <input type="text" th:field="*{employeeID}" id="employeeID/">
+
+    <br/>
     <lable for="name">Name: </lable>
     <input type="text" th:field="*{name}" id="name/">
+
+    <br/>
+    <lable for="password">Password: </lable>
+    <input type="text" th:field="*{password}" id="password/">
 
     <br/>
     <lable for="email">e-mail: </lable>
@@ -23,10 +31,6 @@
     <br/>
     <lable for="role">Role: </lable>
     <input type="text" th:field="*{role}" id="role/">
-
-    <br/>
-    <lable for="department">Department: </lable>
-    <input type="text" th:field="*{department}" id="department/">
 
     <br/>
     <input type="submit" value="Apply changes">

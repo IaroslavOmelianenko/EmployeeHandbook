@@ -8,20 +8,23 @@ import java.util.List;
 @Table(name = "departments")
 public class Department {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int departmentID;
 
     @Column(name = "department_name")
     private String departmentName;
+
     @Column(name = "director_id")
     private int director;
+
     @Column(name = "moderator_id")
     private int moderator;
+
     @Column(name = "head_department_id")
     private int headDepartment;
+
     @Column(name = "subordinate_department_id")
     private int subordinateDepartment;
 
@@ -33,15 +36,6 @@ public class Department {
     public Department() {
     }
 
-    public Department(int departmentID, String departmentName, int director, int moderator, int headDepartment, int subordinateDepartment, List<Employee> departmentEmployees) {
-        this.departmentID = departmentID;
-        this.departmentName = departmentName;
-        this.director = director;
-        this.moderator = moderator;
-        this.headDepartment = headDepartment;
-        this.subordinateDepartment = subordinateDepartment;
-        this.departmentEmployees = departmentEmployees;
-    }
 
     public void addEmployee(Employee employee){
         employee.setDepartment(this);

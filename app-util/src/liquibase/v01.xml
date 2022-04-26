@@ -150,24 +150,7 @@
 
     </changeSet>
 
-
-
     <changeSet id="v01-9" author="IaroslavOmelianenko">
-
-        <insert tableName="employees">
-            <column name="id" value="1"/>
-            <column name="employee_name" value="admin"/>
-            <column name="email" value="admin@mail.com"/>
-            <column name="position_id" value="1"/>
-            <column name="role_id" value="3"/>
-            <column name="password"
-                value="$2a$12$XO5g04bhDzPnQKF.Ba02peVF0wQYY5vQcJ8GgsW5I49vJJIUNTmhW"/>
-        </insert>
-
-    </changeSet>
-
-
-    <changeSet id="v01-10" author="IaroslavOmelianenko">
 
         <insert tableName="roles">
             <column name="id" value="1"/>
@@ -193,19 +176,6 @@
 
     </changeSet>
 
-
-    <changeSet id="v01-11" author="IaroslavOmelianenko">
-        <insert tableName="employee_roles">
-            <column name="employee_id" value="1"/>
-            <column name="role_id" value="3"/>
-        </insert>
-
-        <insert tableName="employee_positions">
-            <column name="employee_id" value="1"/>
-            <column name="position_id" value="1"/>
-        </insert>
-
-    </changeSet>
 </databaseChangeLog>
 
 

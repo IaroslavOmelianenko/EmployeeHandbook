@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.*;
 
 @Controller
 @RequestMapping("/employees")
+
 public class EmployeeController {
     private EmployeeService employeeService;
 
@@ -16,7 +17,6 @@ public class EmployeeController {
     public void setEmployeeService(EmployeeService employeeService) {
         this.employeeService = employeeService;
     }
-
 
     @GetMapping("/{id}")
     public String show(@PathVariable("id") int id, Model model){

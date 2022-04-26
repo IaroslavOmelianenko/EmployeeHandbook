@@ -1,5 +1,6 @@
 package com.omelianenko.employeehandbook.config;
 
+import com.omelianenko.employeehandbook.dao.DepartmentDAOImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.annotation.Bean;
@@ -49,4 +50,5 @@ public class SpringConfiguration implements WebMvcConfigurer {
         resolver.setTemplateEngine(templateEngine());
         registry.viewResolver(resolver);
     }
+
 }

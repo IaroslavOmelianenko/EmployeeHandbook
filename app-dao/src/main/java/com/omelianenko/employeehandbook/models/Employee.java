@@ -6,23 +6,25 @@ import javax.persistence.*;
 @Table(name = "employees")
 public class Employee {
 
-
     @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id")
     private int employeeID;
 
     @Column(name = "employee_name")
     private String name;
+
     @Column(name = "email")
     private String email;
+
     @Column(name = "password")
     private String password;
+
     @Column(name = "position_id")
     private int position;
+
     @Column(name = "role_id")
     private int role;
-
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "department_id")
